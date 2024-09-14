@@ -1,0 +1,13 @@
+version: '3.9'
+name: 'lab-files-postgres'
+services:
+  postgres:
+    image: postgres:${POSTGRES_VERSION:-16.2}
+    container_name: postgres_container
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=password
+    volumes:
+      - ./pg_data:/var/lib/postgresql/data
+    ports:
+      - 5432:5432

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="WARN">
+    <Appenders>
+        <!-- Логирование информации в отдельный файл -->
+        <RollingFile name="TextInfoFile" fileName="C:\Users\Olesia\Desktop\MyJavaLogs\TextInfo\app-info.log"
+                     filePattern="C:\Users\Olesia\Desktop\MyJavaLogs\Info\app-info-%d{yyyy-MM-dd}.log.gz">
+            <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss} [%level] [%logger{1}] [%thread] %msg%n" />
+            <Policies>
+                <SizeBasedTriggeringPolicy size="10MB" />
+                <TimeBasedTriggeringPolicy />
+            </Policies>
+            <DefaultRolloverStrategy max="5" fileIndex="min" />
+        </RollingFile>
+
+        <!-- Логирование ошибок в отдельный файл -->
+        <RollingFile name="JSONInfoFile" fileName="C:\Users\Olesia\Desktop\MyJavaLogs\JSONInfo\app-info.json"
+                     filePattern="C:\Users\Olesia\Desktop\MyJavaLogs\Error\app-info-%d{yyyy-MM-dd}.json.gz">
+            <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss} [%level] [%logger{1}] [%thread] %msg%n" />
+            <Policies>
+                <SizeBasedTriggeringPolicy size="10MB" />
+                <TimeBasedTriggeringPolicy />
+            </Policies>
+            <DefaultRolloverStrategy max="5" fileIndex="min" />
+        </RollingFile>
+    </Appenders>
+
+    <Loggers>
+        <!-- Логгер для информационных сообщений -->
+        <Logger name="com.myapp" level="info" additivity="false">
+            <AppenderRef ref="TextFile" />
+        </Logger>
+
+        <!-- Логгер для ошибок -->
+        <Logger name="com.myapp" level="info" additivity="false">
+            <AppenderRef ref="JSONFile" />
+        </Logger>
+
+        <Root level="info">
+            <AppenderRef ref="TextInfoFile"/>
+            <AppenderRef ref="JsonInfoFile"/>
+        </Root>
+    </Loggers>
+</Configuration>

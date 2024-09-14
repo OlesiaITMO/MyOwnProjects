@@ -1,0 +1,8 @@
+#spring:
+ # data:
+  #  mongodb:
+   #   host: mongodb_container
+    #  port: 27017
+     # database: mongodb
+
+#      uri: mongodb://user:pass@localhost:27017/mongodb?authSource=admin
